@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
+  <title id="title">BasedCode wordmark</title>
+  <desc id="desc">A JetBrains Mono-inspired BasedCode wordmark in plum, white, and luminous purple.</desc>
+  <rect width="1200" height="220" rx="20" fill="#1D0A25"/>
+  <text x="70" y="154" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="84" font-weight="700" letter-spacing="-8">&lt;/</text>
+  <text x="235" y="154" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="84" font-weight="700" letter-spacing="-8">Based</text>
+  <text x="710" y="154" fill="#B568C2" font-family="JetBrains Mono, monospace" font-size="84" font-weight="700" letter-spacing="-8">Code</text>
+</svg>

@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BasedCode brand bible: a creator-led brand for building, playing and learning.">
+  <meta name="theme-color" id="themeColor" content="#121014">
+  <title>BasedCode — Brand Bible v2.4</title>
+  <script>try{const t=localStorage.getItem('basedcode-brand-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch{}</script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
+    :root {
+      color-scheme: dark;
+      --ink: #ffffff;
+      --muted: #d7c9dd;
+      --quiet: #a995b2;
+      --line: rgba(255,255,255,.12);
+      --panel: rgba(45,21,64,.72);
+      --panel-2: rgba(255,255,255,.055);
+      --void: #121014;
+      --plum: #1d0a25;
+      --deep-purple: #2d1540;
+      --groove: #432755;
+      --purple: #663674;
+      --violet: #83478f;
+      --electric: #a553b5;
+      --lilac: #b568c2;
+      --key: #ffffff;
+      --radius: 18px;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+      --ease-out: cubic-bezier(.22, 1, .36, 1);
+      --ease-fluid: cubic-bezier(.4, 0, .2, 1);
+      --motion-fast: 180ms;
+      --motion-medium: 480ms;
+      --motion-slow: 8s;
+    }
+    html[data-theme="light"] {
+      color-scheme: light;
+      --ink: #1d0a25;
+      --muted: #51445a;
+      --quiet: #75647d;
+      --line: rgba(29,10,37,.16);
+      --panel: rgba(255,255,255,.78);
+      --panel-2: rgba(45,21,64,.07);
+      --void: #f5f0f7;
+      --key: #2d1540;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--void); font-family: var(--mono); line-height: 1.65; transition: color var(--motion-medium) var(--ease-fluid), background var(--motion-medium) var(--ease-fluid); }
+    a { color: var(--lilac); text-decoration: none; transition: color var(--motion-fast) var(--ease-fluid); }
+    a:hover { color: var(--key); }
+    button { font: inherit; }
+    .shell { position: relative; z-index: 1; display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+    .scroll-progress { position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 2px; background: #fff; transform: scaleX(0); transform-origin: left center; will-change: transform; opacity: .82; }
+    .theme-toggle { position: fixed; z-index: 110; top: 16px; right: 18px; padding: 9px 12px; border: 1px solid rgba(255,255,255,.34); border-radius: 9px; background: rgba(18,16,20,.68); color: #fff; box-shadow: 0 8px 28px rgba(0,0,0,.18); backdrop-filter: blur(16px); font: 600 .66rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: transform var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-fluid), background var(--motion-medium) var(--ease-fluid), color var(--motion-medium) var(--ease-fluid); }
+    .theme-toggle:hover { transform: translateY(-2px); border-color: #fff; }
+    aside { position: sticky; top: 0; height: 100vh; padding: 30px 22px; border-right: 1px solid var(--line); background: rgba(11,7,16,.86); backdrop-filter: blur(18px); }
+    .mini-mark { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; letter-spacing: -.08em; color: var(--ink); font-size: 1.1rem; }
+    .mini-mark i { color: var(--key); font-style: normal; }
+    .eyebrow { color: var(--key); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; }
+    nav { display: grid; gap: 5px; margin-top: 45px; }
+    nav a { display: block; padding: 9px 11px; border-radius: 9px; color: var(--muted); font-size: .78rem; transition: color var(--motion-fast) var(--ease-fluid), background var(--motion-fast) var(--ease-fluid), transform var(--motion-fast) var(--ease-out); }
+    nav a:hover { color: var(--ink); background: var(--panel-2); }
+    nav a:hover { transform: translateX(4px); }
+    .side-note { position: absolute; bottom: 28px; left: 22px; right: 22px; color: var(--quiet); font-size: .67rem; }
+    .motion-toggle { margin-top: 26px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.26); border-radius: 8px; background: rgba(255,255,255,.045); color: #fff; font: 600 .66rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: border-color var(--motion-fast) var(--ease-fluid), background var(--motion-fast) var(--ease-fluid); }
+    .motion-toggle:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+    main { overflow: hidden; }
+    .hero { min-height: 640px; padding: 84px clamp(28px, 8vw, 120px); display: grid; align-items: end; overflow: hidden; color: #fff; background: linear-gradient(186.68deg, #472458 5%, #83478f 38%, #663674 58%, #2d1540 100%); background-size: 280% 280%; animation: gradient-drift 10s var(--ease-fluid) infinite; will-change: background-position; position: relative; isolation: isolate; }
+    .hero:before { content: ''; position: absolute; inset: -25%; z-index: -1; pointer-events: none; background: conic-gradient(from 210deg at 68% 42%, transparent 0 30%, rgba(181,104,194,.62) 36%, transparent 44% 63%, rgba(165,83,181,.42) 70%, transparent 77%); filter: blur(24px); animation: field-turn 18s linear infinite; }
+    .hero:after { content: ''; position: absolute; inset: 0; opacity: .22; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px), linear-gradient(112deg, transparent 46%, rgba(255,255,255,.48) 49%, transparent 52%); background-size: 42px 42px, 42px 42px, 260% 100%; mask-image: linear-gradient(to bottom, #000, transparent 95%); animation: scan-pass 8s ease-in-out infinite; }
+    .hero-content { position: relative; z-index: 1; max-width: 920px; }
+    .hero-content > * { animation: rise-in 900ms var(--ease-out) both; }
+    .hero-content > :nth-child(2) { animation-delay: 80ms; }
+    .hero-content > :nth-child(3) { animation-delay: 150ms; }
+    .hero-content > :nth-child(4) { animation-delay: 220ms; }
+    .hero h1 { margin: 20px 0; max-width: 850px; font-size: clamp(3.2rem, 9vw, 8.8rem); line-height: .92; letter-spacing: -.1em; }
+    .hero .eyebrow, .hero h1, .hero h1 span { color: #fff; }
+    .hero h1 span { text-shadow: 0 0 36px rgba(181,104,194,.7); }
+    .hero p { max-width: 680px; margin: 0; color: #ffffff; font-size: clamp(1rem, 1.6vw, 1.28rem); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 35px; }
+    .chip { border: 1px solid rgba(255,255,255,.25); padding: 7px 10px; border-radius: 999px; font-size: .68rem; color: #f5ebfb; transition: border-color var(--motion-fast) var(--ease-fluid), background var(--motion-fast) var(--ease-fluid), transform var(--motion-fast) var(--ease-out); }
+    .chip:hover { border-color: #fff; background: rgba(255,255,255,.08); transform: translateY(-2px); }
+    section { padding: 86px clamp(28px, 8vw, 120px); border-bottom: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 34px; transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+    h2 { margin: 0; font-size: clamp(1.7rem, 4vw, 3.4rem); letter-spacing: -.08em; line-height: 1; }
+    h3 { margin: 0 0 12px; font-size: 1rem; color: var(--lilac); }
+    p { color: var(--muted); }
+    .lead { max-width: 720px; font-size: 1.08rem; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .grid.four-up > .card { grid-column: span 3; }
+    .card { grid-column: span 4; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); transition: transform var(--motion-medium) var(--ease-out), border-color var(--motion-medium) var(--ease-fluid), background var(--motion-medium) var(--ease-fluid), opacity 700ms var(--ease-out); }
+    .card.wide { grid-column: span 8; }
+    .card.full { grid-column: 1 / -1; }
+    .card p:last-child { margin-bottom: 0; }
+    .rule { border-left: 3px solid var(--lilac); padding: 15px 18px; margin: 14px 0; background: rgba(181,104,194,.08); }
+    .rule.no { border-color: var(--key); border-left-style: dashed; background: rgba(255,255,255,.045); }
+    .rule strong { display: block; color: var(--ink); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+    .swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .swatch { min-height: 126px; padding: 12px; display: flex; align-items: end; border-radius: 12px; color: #fff; font-size: .68rem; box-shadow: inset 0 -50px 40px rgba(0,0,0,.2); transition: transform var(--motion-medium) var(--ease-out), box-shadow var(--motion-medium) var(--ease-fluid); }
+    .type-sample { padding: 22px; border-radius: 14px; color: #fff; background: linear-gradient(130deg, var(--plum), var(--violet), var(--purple)); background-size: 260% 260%; animation: gradient-drift 9s var(--ease-fluid) infinite; will-change: background-position; }
+    .type-sample .display { font-size: clamp(2rem, 5vw, 4.8rem); line-height: .95; letter-spacing: -.1em; }
+    .type-sample .code { margin-top: 20px; color: #d7c9dd; font-size: .82rem; }
+    .logo-lockup { display: grid; place-items: center; min-height: 260px; padding: 30px; border-radius: var(--radius); background: #ffffff; color: #121014; }
+    .logo-lockup.dark { background: linear-gradient(135deg, var(--plum), var(--violet), var(--purple)); background-size: 260% 260%; animation: gradient-drift 10s var(--ease-fluid) infinite; will-change: background-position; color: #fff; position: relative; overflow: hidden; }
+    .logo-lockup.dark:before { content: ''; position: absolute; inset: -60% -30%; background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,.13) 49%, transparent 56%); animation: lockup-light 9s var(--ease-fluid) infinite; }
+    .wordmark { position: relative; z-index: 1; font-size: clamp(2.5rem, 7vw, 6.5rem); font-weight: 700; letter-spacing: -.13em; line-height: .9; animation: wordmark-breathe 6s var(--ease-fluid) infinite; }
+    .wordmark b { color: var(--lilac); font-weight: 700; }
+    .code-mark { display: inline-flex; gap: 5px; margin-right: 14px; color: var(--key); font-size: .55em; letter-spacing: -.2em; animation: signal-pulse 3.2s var(--ease-fluid) infinite; }
+    .mock { min-height: 180px; padding: 20px; border-radius: 14px; position: relative; overflow: hidden; color: #fff; background: linear-gradient(135deg, #1d0a25, #83478f 45%, #472458 67%, #663674); background-size: 260% 260%; animation: gradient-drift 8s var(--ease-fluid) infinite; will-change: background-position; border: 1px solid rgba(181,104,194,.42); }
+    .mock:after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, transparent 0 46%, rgba(255,255,255,.13) 49%, transparent 52%); background-size: 240% 100%; animation: scan-pass 7s ease-in-out infinite; }
+    .mock .top { display: flex; justify-content: space-between; color: #d7c9dd; font-size: .68rem; }
+    .mock .big { margin-top: 30px; max-width: 470px; font-size: clamp(1.3rem, 3vw, 2.6rem); line-height: 1.05; letter-spacing: -.08em; }
+    .socials { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .socials a { display: flex; justify-content: space-between; padding: 13px 15px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); font-size: .76rem; transition: color var(--motion-fast) var(--ease-fluid), border-color var(--motion-fast) var(--ease-fluid), background var(--motion-fast) var(--ease-fluid), transform var(--motion-fast) var(--ease-out); }
+    .socials a:hover { background: var(--panel-2); color: var(--ink); }
+    .socials a:hover { border-color: rgba(255,255,255,.42); transform: translateX(3px); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .76rem; }
+    th, td { padding: 13px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { color: var(--lilac); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
+    td { color: var(--muted); }
+    code, .token { color: var(--lilac); }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .button { border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); border-radius: 10px; padding: 10px 14px; cursor: pointer; font-size: .72rem; }
+    .button:hover { border-color: var(--key); }
+    pre { overflow: auto; max-height: 560px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: #121014; color: #d7c9dd; font-size: .7rem; line-height: 1.55; }
+    footer { padding: 32px clamp(28px, 8vw, 120px); color: var(--quiet); font-size: .68rem; }
+    html[data-theme="light"] aside { background: rgba(245,240,247,.88); }
+    html[data-theme="light"] .theme-toggle { border-color: rgba(45,21,64,.28); background: rgba(255,255,255,.76); color: #2d1540; }
+    html[data-theme="light"] .theme-toggle:hover { border-color: #2d1540; }
+    html[data-theme="light"] .motion-toggle { border-color: rgba(45,21,64,.26); background: rgba(45,21,64,.045); color: #2d1540; }
+    html[data-theme="light"] .motion-toggle:hover { border-color: #2d1540; background: rgba(45,21,64,.1); }
+    html[data-theme="light"] h3, html[data-theme="light"] th, html[data-theme="light"] code, html[data-theme="light"] .token { color: #663674; }
+    html[data-theme="light"] .type-sample h3, html[data-theme="light"] .mock h3 { color: #fff; }
+    html[data-theme="light"] .logo-lockup.dark .code-mark { color: #fff; }
+    html[data-theme="light"] .logo-lockup.dark .wordmark b { color: #d7c9dd; }
+    html[data-theme="light"] .scroll-progress { background: #2d1540; }
+    html[data-theme="light"] .socials a:hover { border-color: rgba(45,21,64,.38); }
+    @media (hover: hover) {
+      .card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.28); background: rgba(71,36,88,.76); }
+      .swatch:hover { transform: translateY(-5px) scale(1.015); box-shadow: inset 0 -50px 40px rgba(0,0,0,.18), 0 18px 38px rgba(0,0,0,.2); }
+      html[data-theme="light"] .card:hover { border-color: rgba(45,21,64,.26); background: rgba(255,255,255,.94); }
+    }
+    .motion-enabled section.motion-pending .section-head,
+    .motion-enabled section.motion-pending > .grid > .card { opacity: 0; transform: translateY(18px); }
+    .motion-enabled section.motion-visible .section-head,
+    .motion-enabled section.motion-visible > .grid > .card { opacity: 1; transform: translateY(0); transition-delay: var(--reveal-delay, 0ms); }
+    @keyframes field-turn { to { transform: rotate(360deg) scale(1.08); } }
+    @keyframes scan-pass { 0%, 15% { background-position: 130% 0; } 70%, 100% { background-position: -130% 0; } }
+    @keyframes gradient-drift { 0%, 100% { background-position: 0% 20%; } 50% { background-position: 100% 80%; } }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes lockup-light { 0%, 18% { transform: translateX(-45%) rotate(2deg); opacity: 0; } 38% { opacity: 1; } 58%, 100% { transform: translateX(45%) rotate(2deg); opacity: 0; } }
+    @keyframes wordmark-breathe { 0%, 100% { transform: translateY(0); text-shadow: 0 0 0 rgba(181,104,194,0); } 50% { transform: translateY(-2px); text-shadow: 0 0 24px rgba(181,104,194,.24); } }
+    @keyframes signal-pulse { 0%, 100% { opacity: .72; } 50% { opacity: 1; } }
+    @media (max-width: 900px) { .shell { display: block; } aside { position: relative; height: auto; border-right: 0; border-bottom: 1px solid var(--line); } nav { display: flex; flex-wrap: wrap; margin-top: 22px; } .side-note { display: none; } .card, .card.wide, .grid.four-up > .card { grid-column: span 6; } }
+    @media (max-width: 620px) { .hero { min-height: 560px; padding-top: 60px; } section { padding-top: 58px; padding-bottom: 58px; } .card, .card.wide, .grid.four-up > .card { grid-column: 1 / -1; } .swatches { grid-template-columns: repeat(2, 1fr); } .socials { grid-template-columns: 1fr; } .section-head { display: block; } }
+    html.motion-off { scroll-behavior: auto; }
+    html.motion-off *, html.motion-off *:before, html.motion-off *:after { transition: none !important; animation: none !important; }
+    html.motion-off .scroll-progress { display: none; }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">Light theme</button>
+  <div class="shell">
+    <aside aria-label="Brand bible navigation">
+      <a class="mini-mark" href="#top" data-ripple data-duration="650">Based<span>Code</span><i>/</i></a>
+      <div class="eyebrow" style="margin-top:18px">Brand bible · v2.4</div>
+      <button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false">Pause motion</button>
+      <nav>
+        <a href="#essence">01 / Essence</a><a href="#relationship">02 / Brand roles</a><a href="#voice">03 / Voice</a><a href="#identity">04 / Identity</a><a href="#type">05 / Type</a><a href="#colour">06 / Colour</a><a href="#imagery">07 / Imagery</a><a href="#executions">08 / Executions</a><a href="#channels">09 / Channels</a><a href="#spec">10 / AI spec</a>
+      </nav>
+      <div class="side-note">A creator brand for building, playing and learning.<br><br>Use this document as the source of truth for BasedCode representation.</div>
+    </aside>
+    <main id="top">
+      <header class="hero">
+        <div class="hero-content">
+          <div class="eyebrow">A creator-led developer brand</div>
+          <h1 data-ripple data-duration="1700" data-delay="120">Build it.<br><span>Play it.</span><br>Learn it.</h1>
+          <p>BasedCode is Seb Fehr’s creator and technology brand: building games and software in public, testing emerging tools honestly, and sharing the decisions behind the work.</p>
+          <div class="hero-meta"><span class="chip">curious</span><span class="chip">capable</span><span class="chip">playful</span><span class="chip">dynamic</span><span class="chip">build in public</span><span class="chip">build together</span></div>
+        </div>
+      </header>
+
+      <section id="essence">
+        <div class="section-head"><h2>01 / Essence</h2><span class="eyebrow">What we mean</span></div>
+        <div class="grid">
+          <div class="card wide"><h3>Definition and positioning</h3><p>BasedCode is Seb Fehr’s creator and technology brand. It turns real game and software production into useful, entertaining content through live development, technical explanation, honest experiments, and visible outcomes.</p><p class="lead">Unlike generic technology commentary or performative “build in public” content, BasedCode is grounded in active projects, working code, production experience, and conclusions supported by evidence.</p><p>The brand is not a course, consultancy, professional-services offer, or performance of expertise. It is a living record of making.</p></div>
+          <div class="card"><h3>Audience</h3><p>Practising and aspiring developers, indie teams and technical founders, and technology-curious viewers who want genuine access to active work and a place to compare notes, ask questions, and make progress with others.</p></div>
+          <div class="card"><h3>Content pillars</h3><p><span class="token">BUILD</span> software, games, tools, and systems.<br><span class="token">PLAY</span> test ideas, games, experiments, and weird edges.<br><span class="token">LEARN</span> share lessons, failures, discoveries, and context.<br><span class="token">TOGETHER</span> invite feedback, playtests, questions, and shared momentum.</p></div>
+          <div class="card"><h3>Brand shorthand</h3><p><strong>Experienced builder.</strong><br><strong>Curious experimenter.</strong><br><strong>Candid host.</strong><br><strong>Generous collaborator.</strong></p><p>Curious, capable, playful, dynamic, practical, transparent, and welcoming.</p></div>
+          <div class="card full"><h3>Strategic foundation</h3><div class="grid four-up"><div class="card"><strong>PURPOSE</strong><p>Make ambitious creative technology understandable by showing the real work, trade-offs, failures, and decisions involved in building it.</p></div><div class="card"><strong>MISSION</strong><p>Build worthwhile games and software in public, give people meaningful access to the process, and create a place where practical knowledge and momentum are shared.</p></div><div class="card"><strong>VISION</strong><p>A creator-led technical community where entertainment, education, real production, and peer contribution reinforce each other from concept through release and revision.</p></div><div class="card"><strong>PROMISE</strong><p>You will see real work, real constraints, honest conclusions, and people making progress together.</p></div></div></div>
+          <div class="card full"><h3>Core principles</h3><div class="grid" style="margin-top:18px"><div class="card"><h3>Build real things</h3><p>Start from genuine production, tests, releases, failures, or decisions wherever possible.</p></div><div class="card"><h3>Show the reasoning</h3><p>Explain constraints, alternatives, trade-offs, consequences, and why a decision was made.</p></div><div class="card"><h3>Tools, not religion</h3><p>Evaluate AI and emerging technology through real use, including clean-up, limitations, integration, and cost.</p></div><div class="card"><h3>Respect intelligence</h3><p>Translate complexity without trivialising it or using inflated hooks that misrepresent the result.</p></div><div class="card"><h3>Bound participation</h3><p>Let the community influence experiments and playtests without surrendering product coherence or scope.</p></div><div class="card"><h3>Complete the loop</h3><p>Show concept, implementation, release, response, evaluation, and improvement—not only the exciting beginning.</p></div></div></div>
+          <div class="card full"><h3>Audience segments and expectations</h3><div class="table-wrap" style="margin-top:18px"><table><thead><tr><th>Audience</th><th>What they value</th></tr></thead><tbody><tr><td>Practising developers and technical creators</td><td>Implementation detail, architecture decisions, informed comparisons, and transferable production lessons.</td></tr><tr><td>Aspiring game and software developers</td><td>Clear reasoning, visible progress, practical next steps, and expertise that is explained rather than performed.</td></tr><tr><td>Indie teams and technical founders</td><td>Scope control, launches, community, tool selection, production decisions, and commercial reality.</td></tr><tr><td>Technology-curious viewers</td><td>Visual progress, understandable stakes, and explanations that do not require specialist knowledge.</td></tr></tbody></table></div><p>Everyone should expect credible explanations, candid evaluation, visible iteration, occasional failure, and entertainment created by the work itself.</p></div>
+        </div>
+      </section>
+
+      <section id="relationship">
+        <div class="section-head"><h2>02 / Brand roles</h2><span class="eyebrow">Keep the edges clear</span></div>
+        <div class="grid">
+          <div class="card"><h3>Seb Fehr</h3><p>The host, maker, technical voice, and public face. Use <strong>Sebastiaan Fehr</strong> formally and <strong>Seb Fehr</strong> or <strong>Seb</strong> conversationally.</p></div>
+          <div class="card"><h3>BasedCode</h3><p>Seb’s public creator, media, and community brand. It owns the channel experience, content system, visual identity, and audience relationship.</p></div>
+          <div class="card"><h3>Actuator Digital</h3><p>The separate software and game studio company. It is not a division of BasedCode, and BasedCode is not its alternate corporate identity.</p></div>
+          <div class="card wide"><h3>Actuator Games</h3><p>The game-facing studio label. It can appear alongside BasedCode when Seb documents or streams studio work, with ownership and attribution left clear.</p></div>
+          <div class="card"><h3>Products</h3><p><strong>Not Monsters</strong>, <strong>On Point</strong>, and other products retain their own identities. BasedCode may feature their development without claiming product authorship or inheriting their complete aesthetic.</p></div>
+          <div class="card full"><h3>Approved relationship phrasing</h3><div class="rule"><strong>DO</strong> “Seb Fehr of BasedCode, Director of Actuator Digital.”<br>“Building Not Monsters with Actuator Games, live on BasedCode.”<br>“A BasedCode stream featuring development of Actuator Games’ Not Monsters.”</div><div class="rule no"><strong>DON’T</strong> “BasedCode, a division of Actuator Digital.”<br>“Not Monsters by BasedCode,” unless that credit is deliberately approved.<br>Do not use BasedCode, Actuator Digital, Actuator Games, or a product name interchangeably.</div></div>
+        </div>
+      </section>
+
+      <section id="voice">
+        <div class="section-head"><h2>03 / Voice</h2><span class="eyebrow">Human, useful, alive</span></div>
+        <div class="grid">
+          <div class="card wide"><h3>Core voice</h3><p>BasedCode speaks in a direct, intelligent, first-person voice: an experienced developer thinking clearly in public and making room for other people’s insight.</p><div class="rule"><strong>Direct</strong> Lead with the useful point and prefer concrete language over filler.</div><div class="rule"><strong>Evidence-led</strong> Tie conclusions to tests, implementation, observed results, or clearly labelled judgement.</div><div class="rule"><strong>Technically accessible</strong> Use correct terminology, then explain why it matters.</div><div class="rule"><strong>Candid</strong> Separate facts, assumptions, and open questions without pretending to have every answer.</div><div class="rule"><strong>Generous</strong> Credit contributions, respond to real questions, and make useful knowledge easy to pass on.</div><div class="rule"><strong>Earned energy</strong> Be excited when a release, result, milestone, or community achievement gives a concrete reason.</div></div>
+          <div class="card"><h3>Use</h3><p>Plain language. Specific examples. Honest constraints and trade-offs. Warmth, patient explanation, natural humour, and occasional profanity. “I don’t know yet” is allowed.</p><h3 style="margin-top:24px">Avoid</h3><p>Fake certainty, income promises, hustle clichés, empty AI hype, generic enthusiasm, targeted jokes, and claims detached from evidence.</p></div>
+          <div class="card full"><h3>Before / after</h3><div class="table-wrap"><table><thead><tr><th>Weak</th><th>BasedCode</th></tr></thead><tbody><tr><td>“The ultimate roadmap to becoming a developer.”</td><td>“Here’s what I tried, what broke, and what I’d do differently.”</td></tr><tr><td>“AI is changing everything. Don’t get left behind.”</td><td>“I gave the agent a real problem and watched where it helped—and where it confidently made things worse.”</td></tr><tr><td>“This simple trick will 10x your productivity.”</td><td>“This made my workflow faster, but it also added a new class of bugs.”</td></tr></tbody></table></div></div>
+          <div class="card full"><h3>Tone by context</h3><div class="table-wrap" style="margin-top:18px"><table><thead><tr><th>Context</th><th>Tone</th></tr></thead><tbody><tr><td>Live stream</td><td>Conversational, quick, responsive, technically grounded.</td></tr><tr><td>Tutorial or breakdown</td><td>Structured, precise, patient, outcome-focused.</td></tr><tr><td>Launch announcement</td><td>Energetic, clear, action-oriented, attached to a concrete event.</td></tr><tr><td>Failure or delay</td><td>Accountable, factual, candid, forward-looking.</td></tr><tr><td>Community post</td><td>Warm, concise, participatory, bounded by clear ownership.</td></tr><tr><td>Conference talk</td><td>Authoritative, practical, reflective, evidence-led.</td></tr></tbody></table></div></div>
+          <div class="card full"><h3>Vocabulary guidance</h3><div class="grid" style="margin-top:18px"><div class="card wide"><h3>Favour</h3><p>Build, test, ship, revise, practical, working, playable, measurable, constraint, trade-off, scope, implementation, experiment, result, finding, limitation, live, behind the scenes, milestone, release, and post-mortem.</p></div><div class="card"><h3>Limit</h3><p>Revolutionary, game-changing, effortless, magic, disrupt, next-generation, “cutting-edge” without evidence, and “AI made this” when substantial human direction was required.</p></div></div></div>
+        </div>
+      </section>
+
+      <section id="identity">
+        <div class="section-head"><h2>04 / Identity</h2><span class="eyebrow">Wordmark first</span></div>
+        <div class="grid">
+          <div class="card wide"><div class="logo-lockup dark"><div class="wordmark"><span class="code-mark">&lt;/</span>Based<b>Code</b></div></div></div>
+          <div class="card"><h3>Wordmark</h3><p>Use <strong>BasedCode</strong> as the primary display form. The capital C provides a useful visual break while keeping the name compact and developer-native.</p><p>Use the code mark as a supporting device, never as a substitute for recognisable naming.</p></div>
+          <div class="card full"><h3>Lockup rules</h3><div class="grid"><div class="card"><strong>DO</strong><p>Use the wordmark in high contrast. Give it room. Keep the code mark simple.</p></div><div class="card"><strong>DON’T</strong><p>Stretch, bevel, outline, over-glitch, or add unrelated tech clichés. Do not copy Actuator’s logo.</p></div><div class="card"><strong>USE WHEN</strong><p>Use the full wordmark for profile art, thumbnails, website headers, channel banners, and durable assets.</p></div></div></div>
+          <div class="card full"><h3>Naming and editorial rules</h3><div class="table-wrap" style="margin-top:18px"><table><thead><tr><th>Subject</th><th>Rule</th></tr></thead><tbody><tr><td>Brand</td><td>Write <strong>BasedCode</strong>. Avoid accidental variants such as Based Code, Basedcode, BASEDCODE, or based_code unless a formally approved visual treatment requires one.</td></tr><tr><td>Host</td><td>Use <strong>Sebastiaan Fehr</strong> formally; <strong>Seb Fehr</strong> or <strong>Seb</strong> publicly and conversationally.</td></tr><tr><td>Companies and products</td><td>Use the full names Actuator Digital, Actuator Games, Not Monsters, and On Point. Preserve creator, studio, label, and product distinctions.</td></tr><tr><td>Language</td><td>Use Australian English in formal and owned-channel copy.</td></tr><tr><td>Headings and emphasis</td><td>Prefer sentence case. Avoid excessive exclamation marks and decorative all-caps outside established labels.</td></tr><tr><td>Dates and quantities</td><td>Use numerals and unambiguous dates such as 23 August 2026.</td></tr><tr><td>Claims</td><td>Avoid “best,” “ultimate,” “revolutionary,” and similar superlatives unless evidence supports the claim.</td></tr></tbody></table></div></div>
+        </div>
+      </section>
+
+      <section id="type">
+        <div class="section-head"><h2>05 / Type</h2><span class="eyebrow">JetBrains Mono</span></div>
+        <div class="grid">
+          <div class="card wide"><div class="type-sample"><div class="display">Make the<br>thing real.</div><div class="code">// ship something worth playing</div></div></div>
+          <div class="card"><h3>Primary typeface</h3><p>JetBrains Mono is the primary typeface for headlines, labels, UI, captions, and body copy. It is open source and designed for code readability, with distinct symbols and matching weights/italics.</p><p><a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono reference ↗</a></p></div>
+          <div class="card full"><div class="table-wrap"><table><thead><tr><th>Role</th><th>Weight</th><th>Guidance</th></tr></thead><tbody><tr><td>Hero / display</td><td>Bold / ExtraBold</td><td>Tight tracking, short lines, strong contrast.</td></tr><tr><td>Section headings</td><td>Bold / SemiBold</td><td>Use numbered system labels and compact hierarchy.</td></tr><tr><td>Body</td><td>Regular</td><td>Readable line length; do not overuse all caps.</td></tr><tr><td>Technical labels</td><td>Medium</td><td>Use for commands, metadata, file names, and status markers.</td></tr><tr><td>Emphasis</td><td>Italic</td><td>Use sparingly for asides and human commentary.</td></tr></tbody></table></div></div>
+        </div>
+      </section>
+
+      <section id="colour">
+        <div class="section-head"><h2>06 / Colour</h2><span class="eyebrow">Purple energy, dark ground</span></div>
+        <div class="grid">
+          <div class="card full"><div class="swatches"><div class="swatch" style="background:#121014">CARBON<br>#121014</div><div class="swatch" style="background:#1d0a25">PLUM<br>#1D0A25</div><div class="swatch" style="background:#2d1540">DEEP<br>#2D1540</div><div class="swatch" style="background:#472458">CORE<br>#472458</div><div class="swatch" style="background:#83478f">VIOLET<br>#83478F</div><div class="swatch" style="background:#b568c2;color:#1d0a25">LUMEN<br>#B568C2</div></div></div>
+          <div class="card wide"><h3>Signature gradient</h3><div class="mock" style="min-height:180px;background:linear-gradient(186.68deg,#472458 5%,#83478f 38%,#663674 58%,#2d1540 100%)"><div class="top">BASED / CODE <span>v2.4</span></div><div class="big">Purple carries the signal.<br>Motion makes it technical.</div></div></div>
+          <div class="card"><h3>Use</h3><p>Build fields from plum, deep purple, and core purple. Use violet and lumen as illumination, hierarchy, and moving energy. White is the key colour on dark and purple fields. Light applications use a warm near-white canvas, deep-plum text, and the same purple hierarchy.</p><h3 style="margin-top:24px">Avoid</h3><p>Competing accent colours, green, red, blue-violet neon, rainbow palettes, arbitrary glow, or flat purple slabs. Create emphasis through contrast, scale, weight, opacity, and motion.</p></div>
+          <div class="card full"><h3>Motion language</h3><p>BasedCode should feel alive wherever the medium supports it. Motion is smooth, subtle, and continuous: usually noticed as polish before it is noticed as animation. <strong>Every gradient must move</strong> on a motion-capable surface; a static gradient is only a fallback when motion is explicitly paused or the format is inherently static. Gradient movement must become perceptible within two to three seconds. Page-level ambient gradient movement belongs inside the hero; the document body remains a stable dark workspace. BasedCode pages use <a href="https://github.com/BasedCodeDev/text-ripple-js">Text Ripple JS</a> as a signature transition for short, prominent text.</p><div class="grid"><div class="card"><strong>DO</strong><p>Animate the hero gradient and intentional component gradients with visible but smooth colour-field travel. Ripple hero statements, section titles, compact labels, and occasional live-state text.</p></div><div class="card"><strong>DON’T</strong><p>Animate the full-page document background. Do not make movement so slow that it reads as static, ripple paragraphs continuously, or use random glitch, jitter, and gamer-RGB effects.</p></div><div class="card"><strong>USE WHEN</strong><p>Use text ripple for arrival, reveal, state change, or intentional interaction. Preserve the original text during repeat effects and provide an explicit control to pause all motion.</p></div></div></div>
+        </div>
+      </section>
+
+      <section id="imagery">
+        <div class="section-head"><h2>07 / Imagery</h2><span class="eyebrow">Show the work</span></div>
+        <div class="grid">
+          <div class="card wide"><h3>Preferred image world</h3><p>Real screens. Half-finished prototypes. Game builds. Desk setups. Stream moments. Event rooms. Code in context. The image should feel close enough to touch, not like stock technology.</p><div class="mock"><div class="top">LIVE BUILD / NOT MONSTERS <span>09:42:18</span></div><div class="big">The bug is real.<br>The fix is probably worse.</div></div></div>
+          <div class="card"><h3>Composition</h3><p>Prefer strong crops, clear focal points, visible texture, and a deliberate relationship between image and type. Use overlays to add information, not to hide weak imagery.</p><div class="rule"><strong>USE WHEN</strong> A real moment can communicate the process faster than an explanation.</div></div>
+          <div class="card full"><h3>Visual guardrails</h3><div class="rule"><strong>DO</strong> Show Seb actively building, testing, presenting, or directing work. Keep visible game, code, art, diagram, prototype, and before/after context. Generated support imagery must feel believable and authored.</div><div class="rule no"><strong>DON’T</strong> Use hooded hackers, Matrix code, generic cyberpunk, esports aggression, fake product screenshots, decorative terminal clichés, or inconsistent AI imagery as a substitute for a system. Never let the medieval or horror-comedy aesthetic of Not Monsters become the master BasedCode identity.</div></div>
+        </div>
+      </section>
+
+      <section id="executions">
+        <div class="section-head"><h2>08 / Executions</h2><span class="eyebrow">One system, many surfaces</span></div>
+        <div class="grid">
+          <div class="card"><h3>Profile / avatar</h3><div class="logo-lockup dark"><div class="wordmark" style="font-size:3.8rem"><span class="code-mark">&lt;/</span>BC</div></div><p>Use a legible mark at small sizes. Avoid detailed illustrations in the avatar.</p></div>
+          <div class="card"><h3>Thumbnail</h3><div class="mock"><div class="top">BUILD / PLAY / LEARN <span>01</span></div><div class="big">I made the<br>bad idea work.</div></div><p>Lead with one human sentence. Add context second.</p></div>
+          <div class="card"><h3>Announcement</h3><div class="mock"><div class="top">BASED CODE / UPDATE</div><p style="color:#ffffff;font-size:1.05rem">A new build is live. It is held together by hope and one suspiciously important boolean.</p></div><p>Specific, warm, and slightly alive.</p></div>
+          <div class="card full"><h3>Recommended messaging — working copy, not immutable taglines</h3><div class="grid" style="margin-top:18px"><div class="card"><h3>One sentence</h3><p>BasedCode is Seb Fehr’s creator and technology brand, building games and software in public and bringing people together around the real decisions, experiments, and lessons behind the work.</p></div><div class="card"><h3>Social bio</h3><p>Building games, software, and creative technology in public. Come build along.</p></div><div class="card"><h3>Short description</h3><p>Live development, practical experiments, shared learning, playtests, and the decisions behind shipping real projects.</p></div><div class="card full"><h3>About</h3><p>BasedCode is where Seb Fehr builds games and software in public. People can follow the process, contribute where useful, and learn alongside the work. The result should feel like a real project with the doors open and a good group around the table.</p></div></div></div>
+          <div class="card full"><h3>Publication decision filter</h3><div class="grid"><div class="card"><strong>01 / REAL</strong><p>Is this grounded in real work or a meaningful question?</p></div><div class="card"><strong>02 / EVIDENCE</strong><p>Are claims supported by evidence or clearly labelled judgement?</p></div><div class="card"><strong>03 / RELATIONSHIP</strong><p>Are Seb, BasedCode, Actuator Digital, Actuator Games, and the product correctly attributed?</p></div><div class="card"><strong>04 / VALUE</strong><p>Does the audience receive useful access, explanation, or participation?</p></div><div class="card"><strong>05 / AUTHORED</strong><p>Does it feel specific and authored rather than generic?</p></div><div class="card"><strong>06 / ACTION</strong><p>Is there one clear call to action with an immediate value or consequence?</p></div></div></div>
+        </div>
+      </section>
+
+      <section id="channels">
+        <div class="section-head"><h2>09 / Channels</h2><span class="eyebrow">Current official links</span></div>
+        <div class="grid"><div class="card full"><div class="socials"><a href="https://www.twitch.tv/basedcode"><span>Twitch</span><span>@basedcode ↗</span></a><a href="https://www.youtube.com/@BasedCode"><span>YouTube</span><span>@BasedCode ↗</span></a><a href="https://www.tiktok.com/@basedcodedev"><span>TikTok</span><span>@basedcodedev ↗</span></a><a href="https://www.instagram.com/basedcodedev/"><span>Instagram</span><span>@basedcodedev ↗</span></a><a href="https://x.com/BasedCodeDev"><span>X</span><span>@BasedCodeDev ↗</span></a><a href="https://github.com/BasedCodeDev"><span>GitHub</span><span>BasedCodeDev ↗</span></a><a href="https://discord.gg/rxJufPTM2"><span>Discord</span><span>Community ↗</span></a></div></div><div class="card full"><h3>Channel roles</h3><div class="table-wrap" style="margin-top:18px"><table><thead><tr><th>Channel</th><th>Primary role</th></tr></thead><tbody><tr><td>Twitch</td><td>Long-form participation, live builds, experiments, debugging, and community interaction.</td></tr><tr><td>YouTube</td><td>Durable project stories, technical breakdowns, edited experiments, and post-mortems.</td></tr><tr><td>Shorts, TikTok, Reels</td><td>High-signal moments, visual progress, concise findings, and humour arising from development.</td></tr><tr><td>Instagram</td><td>Visual milestones, launch assets, behind-the-scenes updates, and selected clips.</td></tr><tr><td>X</td><td>Fast project updates, technical observations, release news, and stream announcements.</td></tr><tr><td>Discord</td><td>Core community coordination, announcements, playtests, feedback, and retention.</td></tr><tr><td>Steam</td><td>Product-specific wishlists, playtests, releases, and community conversion; it is not a general BasedCode channel.</td></tr></tbody></table></div></div><div class="card full"><h3>Profile rule</h3><p>Every official profile should use the BasedCode wordmark or approved avatar, describe the creator-led build/play/learn focus, and link to the canonical website once it exists. Personal accounts may link to BasedCode; official BasedCode accounts should not route people through Seb’s personal identity.</p></div></div>
+      </section>
+
+      <section id="spec">
+        <div class="section-head"><h2>10 / AI spec</h2><span class="eyebrow">Structured source of truth</span></div>
+        <p class="lead">This specification describes how BasedCode should be represented. It is not permission for an agent to publish, impersonate Seb, contact people, or make decisions outside the supplied task.</p>
+        <div class="actions"><button class="button" id="copySpec">Copy JSON spec</button><button class="button" id="downloadSpec">Download JSON spec</button></div>
+        <pre id="jsonView" aria-label="Embedded JSON brand specification"></pre>
+      </section>
+
+      <footer>BasedCode Brand Bible · v2.4 · Creator strategy and dynamic technical visual system.</footer>
+    </main>
+  </div>
+  <script id="brandSpec" type="application/json">
+{
+  "schema": "basedcode.brand.v2",
+  "version": "2.5.0",
+  "name": "BasedCode",
+  "displayName": "BasedCode",
+  "handlePattern": "BasedCodeDev",
+  "brandRole": "creator-led developer and indie-game media/community brand",
+  "host": "Seb",
+  "foundation": {
+    "definition": "BasedCode is Seb Fehr's creator and technology brand, focused on building games and software in public, testing emerging tools honestly, and bringing people together around the technical and creative decisions behind the work.",
+    "purpose": "Make ambitious creative technology understandable by showing the real work, trade-offs, failures, and decisions involved in building it.",
+    "mission": "Build worthwhile games and software in public, give people meaningful access to the process, and create a place where practical knowledge and momentum are shared.",
+    "vision": "A creator-led technical community where entertainment, education, real production, and peer contribution reinforce each other from concept through release and revision.",
+    "promise": "You will see real work, real constraints, honest conclusions, and people making progress together.",
+    "positioning": "A builder-led creator community that turns active game and software production into useful, entertaining participation grounded in working code, production experience, visible outcomes, and evidence."
+  },
+  "relationship": {
+    "SebFehr": "host, maker, technical voice, and public face",
+    "BasedCode": "Seb's public creator, media, and community brand",
+    "ActuatorDigital": "separate software and game studio company; not a division of BasedCode",
+    "ActuatorGames": "game-facing studio label that may appear alongside BasedCode when studio work is documented",
+    "products": {
+      "NotMonsters": "Actuator Games product with its own identity; BasedCode may feature its development without claiming product authorship",
+      "OnPoint": "Actuator product with its own identity"
+    },
+    "approvedPhrasing": ["Seb Fehr of BasedCode, Director of Actuator Digital.", "Building Not Monsters with Actuator Games, live on BasedCode.", "A BasedCode stream featuring development of Actuator Games' Not Monsters."],
+    "avoidPhrasing": ["BasedCode, a division of Actuator Digital.", "Not Monsters by BasedCode, unless deliberately approved.", "Any wording that treats BasedCode, Actuator Digital, Actuator Games, or a product as interchangeable."]
+  },
+  "audience": {
+    "segments": {
+      "practisingDevelopers": "Implementation detail, architecture decisions, informed comparisons, and transferable production lessons.",
+      "aspiringDevelopers": "Clear reasoning, visible progress, practical next steps, and explained expertise.",
+      "indieTeamsAndFounders": "Scope control, launches, community, tool selection, production decisions, and commercial reality.",
+      "technologyCuriousViewers": "Visual progress, understandable stakes, and accessible explanations."
+    },
+    "expectations": ["genuine access to active projects", "technically credible explanations", "candid evaluation rather than automatic endorsement", "visible iteration and occasional failure", "direct conversational presentation", "entertainment created by genuine work rather than manufactured drama"]
+  },
+  "traits": ["curious", "capable", "playful", "dynamic", "practical", "transparent", "welcoming"],
+  "personality": [
+    {"trait": "technical", "expression": "specific and able to explain systems", "counterweight": "never needlessly dense or status-seeking"},
+    {"trait": "candid", "expression": "states what worked, failed, and remains uncertain", "counterweight": "never careless with confidential or personal information"},
+    {"trait": "curious", "expression": "tests tools, methods, and unconventional workflows", "counterweight": "never trend-chases without a useful question"},
+    {"trait": "practical", "expression": "focuses on outcomes, constraints, and next actions", "counterweight": "never reduces creative work to pure efficiency"},
+    {"trait": "playful", "expression": "welcomes game culture, humour, and live unpredictability", "counterweight": "never becomes unserious when trust matters"},
+    {"trait": "transparent", "expression": "exposes reasoning, trade-offs, and context", "counterweight": "never performs vulnerability or shares without purpose"}
+  ],
+  "corePrinciples": [
+    {"name": "build real things", "rule": "Start from genuine production, tests, releases, failures, or decisions wherever possible."},
+    {"name": "show the reasoning", "rule": "Explain constraints, alternatives, trade-offs, consequences, and why a decision was made."},
+    {"name": "tools not religion", "rule": "Evaluate AI and emerging technology through practical use, including limitations, clean-up, integration, and cost."},
+    {"name": "respect audience intelligence", "rule": "Translate complexity without trivialising it or misrepresenting results."},
+    {"name": "bound participation", "rule": "Let community participation add value without surrendering product coherence or scope."},
+    {"name": "complete the loop", "rule": "Show concept, implementation, release, response, evaluation, and improvement."}
+  ],
+  "contentPillars": ["build", "play", "learn", "together"],
+  "voice": {
+    "core": "An experienced developer thinking clearly in public: direct, intelligent, first-person, human, and useful.",
+    "attributes": ["direct", "evidence-led", "technically fluent but accessible", "candid about uncertainty", "energetic when the moment earns it", "warm", "instructional", "playful"],
+    "toneByContext": {
+      "liveStream": "conversational, quick, responsive, technically grounded",
+      "tutorial": "structured, precise, patient, outcome-focused",
+      "launch": "energetic, clear, action-oriented, attached to a concrete event",
+      "failureOrDelay": "accountable, factual, candid, forward-looking",
+      "communityPost": "warm, concise, participatory, bounded by clear ownership",
+      "conferenceTalk": "authoritative, practical, reflective, evidence-led"
+    },
+    "allow": ["plain language", "specific examples", "honest constraints", "trade-offs", "natural humour", "occasional profanity", "I don't know yet"],
+    "favourVocabulary": ["build", "test", "ship", "revise", "practical", "working", "playable", "measurable", "constraint", "trade-off", "scope", "implementation", "experiment", "result", "finding", "limitation", "milestone", "release", "post-mortem"],
+    "limitVocabulary": ["revolutionary", "game-changing", "effortless", "magic", "disrupt", "next-generation", "cutting-edge without evidence", "AI made this when substantial human direction was required"],
+    "avoid": ["fake certainty", "income promises", "hustle cliches", "empty AI hype", "generic enthusiasm", "targeted jokes", "claims detached from evidence"]
+  },
+  "editorial": {
+    "brandName": "BasedCode",
+    "hostNames": {"formal": "Sebastiaan Fehr", "public": "Seb Fehr", "conversational": "Seb"},
+    "companyAndProductNames": ["Actuator Digital", "Actuator Games", "Not Monsters", "On Point"],
+    "language": "Australian English",
+    "headings": "sentence case unless the visual system defines a label treatment",
+    "dates": "unambiguous day month year, for example 23 August 2026",
+    "claims": "avoid empty superlatives and label judgement or uncertainty clearly"
+  },
+  "messaging": {
+    "status": "recommended working copy, not immutable taglines",
+    "oneSentence": "BasedCode is Seb Fehr's creator and technology brand, focused on building games and software in public, testing emerging tools honestly, and sharing the decisions behind the work.",
+    "socialBio": "Building games, software, and creative technology in public. Come build along.",
+    "shortDescription": "Live development, practical experiments, shared learning, playtests, and the decisions behind shipping real projects.",
+    "about": "BasedCode is where Seb Fehr builds games and software in public. People can follow the process, contribute where useful, and learn alongside the work. The result should feel like a real project with the doors open and a good group around the table."
+  },
+  "channelRoles": {
+    "twitch": "long-form participation, live builds, experiments, debugging, and community interaction",
+    "youtube": "durable project stories, technical breakdowns, edited experiments, and post-mortems",
+    "shortForm": "high-signal moments, visual progress, concise findings, and humour arising from development",
+    "instagram": "visual milestones, launch assets, behind-the-scenes updates, and selected clips",
+    "x": "fast project updates, technical observations, release news, and stream announcements",
+    "discord": "community coordination, announcements, playtests, feedback, and retention",
+    "steam": "product-specific wishlists, playtests, releases, and conversion; not a general BasedCode channel"
+  },
+  "publicationDecisionFilter": ["grounded in real work or a meaningful question", "claims are evidenced or clearly labelled judgement", "relationships and attribution are clear", "audience receives useful access, explanation, or participation", "presentation feels authored rather than generic", "one clear call to action with immediate value"],
+  "visual": {
+    "direction": "dynamic, technical, modular, high-contrast, spacious, readable",
+    "logo": "wordmark-first; JetBrains Mono; optional simple code mark",
+    "font": "JetBrains Mono",
+    "palette": {
+      "carbon": "#121014",
+      "plum": "#1D0A25",
+      "deepPurple": "#2D1540",
+      "groove": "#432755",
+      "corePurple": "#472458",
+      "purple": "#663674",
+      "violet": "#83478F",
+      "electric": "#A553B5",
+      "lumen": "#B568C2",
+      "white": "#FFFFFF"
+    },
+    "themes": {
+      "dark": {"canvas": "#121014", "text": "#FFFFFF", "panel": "rgba(45,21,64,.72)", "key": "#FFFFFF"},
+      "light": {"canvas": "#F5F0F7", "text": "#1D0A25", "panel": "rgba(255,255,255,.78)", "key": "#2D1540"},
+      "behavior": "Default to dark, provide a persistent top-right theme toggle, and keep hero artwork purple with white content in both themes."
+    },
+    "colourRules": ["purple is dominant", "white is the key colour on dark and purple fields", "light applications use a warm near-white canvas and deep-plum text", "create hierarchy with brightness, scale, weight, opacity, and motion", "do not use green, red, or competing accents"],
+    "motion": {
+      "principle": "BasedCode should feel alive wherever the medium supports animation",
+      "gradientRule": "Every gradient must animate on motion-capable surfaces and movement must become perceptible within two to three seconds; static gradients are allowed only when motion is explicitly paused or the format is inherently static",
+      "pageRule": "Constrain page-level ambient gradient movement to the hero; keep the document body a stable dark workspace",
+      "textRipple": {
+        "requiredForPages": true,
+        "source": "https://github.com/BasedCodeDev/text-ripple-js",
+        "localAsset": "assets/vendor/text-ripple.js",
+        "useFor": ["hero statements", "section titles", "compact labels", "intentional state changes"],
+        "behavior": "Run once on entry; use preserveText for repeat or interaction-triggered ripples",
+        "avoid": ["paragraphs", "continuous navigation animation", "simultaneous competing ripples"],
+        "accessibility": "Provide a visible pause-motion control and preserve all meaning when motion is paused"
+      },
+      "qualities": ["smooth", "subtle", "responsive", "purposeful", "technical"],
+      "patterns": ["hero-contained ambient gradient drift", "animated component gradients", "slow ambient fields", "scanning highlights", "staggered reveals", "responsive hover movement", "scroll progress", "counters", "directional transitions"],
+      "timing": {"microInteractionMs": "160-240", "revealMs": "450-800", "ambientSeconds": "6-20"},
+      "easing": ["cubic-bezier(.22, 1, .36, 1)", "cubic-bezier(.4, 0, .2, 1)"],
+      "avoid": ["random glitch", "constant jitter", "hard elastic bounce", "gamer RGB effects", "animation that competes with reading"],
+      "accessibility": "Pages animate by default, provide an explicit pause-motion control, and preserve all meaning without animation"
+    },
+    "imagery": ["Seb actively building, testing, presenting, or directing", "real work", "prototypes", "streams", "screens", "desks", "events", "before and after contrast", "authentic creator moments"],
+    "avoidImagery": ["hooded hackers", "Matrix code", "generic cyberpunk", "esports aggression", "fake screenshots presented as real", "decorative terminal cliches", "inconsistent AI imagery", "Not Monsters aesthetics as the master BasedCode identity"]
+  },
+  "scopeExclusions": ["professional-services positioning", "consulting offers", "contracting identity guidance", "sponsorship guidance", "partnership terms"],
+  "prohibitedPositioning": ["coding bootcamp", "consultancy", "professional-services brand", "get-rich-quick promise", "generic tech influencer", "Actuator legal or corporate identity", "Actuator Games label", "product-specific fan account"],
+  "officialChannels": {
+    "twitch": "https://www.twitch.tv/basedcode",
+    "youtube": "https://www.youtube.com/@BasedCode",
+    "tiktok": "https://www.tiktok.com/@basedcodedev",
+    "instagram": "https://www.instagram.com/basedcodedev/",
+    "x": "https://x.com/BasedCodeDev",
+    "github": "https://github.com/BasedCodeDev",
+    "discord": "https://discord.gg/rxJufPTM2"
+  },
+  "canonicalWebsite": null,
+  "agentBoundary": "Descriptive brand guidance only; no autonomous publishing, impersonation, outreach, or external action is authorized by this spec."
+}
+  </script>
+  <script src="assets/vendor/text-ripple.js"></script>
+  <script>
+    const spec = JSON.parse(document.getElementById('brandSpec').textContent);
+    const jsonView = document.getElementById('jsonView');
+    jsonView.textContent = JSON.stringify(spec, null, 2);
+    document.getElementById('copySpec').addEventListener('click', async () => {
+      await navigator.clipboard.writeText(JSON.stringify(spec, null, 2));
+      document.getElementById('copySpec').textContent = 'Copied';
+      setTimeout(() => document.getElementById('copySpec').textContent = 'Copy JSON spec', 1500);
+    });
+    document.getElementById('downloadSpec').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(spec, null, 2)], {type: 'application/json'});
+      const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'basedcode-brand-spec.json'; link.click(); URL.revokeObjectURL(link.href);
+    });
+    const themeToggle = document.getElementById('themeToggle');
+    const themeColor = document.getElementById('themeColor');
+    const setTheme = (theme, persist = true) => {
+      const nextTheme = theme === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = nextTheme;
+      themeToggle.textContent = nextTheme === 'dark' ? 'Light theme' : 'Dark theme';
+      themeToggle.setAttribute('aria-pressed', String(nextTheme === 'light'));
+      themeColor.setAttribute('content', nextTheme === 'light' ? '#F5F0F7' : '#121014');
+      if (persist) {
+        try { localStorage.setItem('basedcode-brand-theme', nextTheme); } catch {}
+      }
+    };
+    const initialTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+    themeToggle.addEventListener('click', () => {
+      setTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
+    });
+    setTheme(initialTheme, false);
+    let motionEnabled = true;
+    const textRipple = window.TextRipple || null;
+    const motionToggle = document.getElementById('motionToggle');
+    const setMotion = enabled => {
+      motionEnabled = enabled;
+      document.documentElement.classList.toggle('motion-off', !enabled);
+      motionToggle.textContent = enabled ? 'Pause motion' : 'Play motion';
+      motionToggle.setAttribute('aria-pressed', String(!enabled));
+      if (!enabled) textRipple?.cancelAnimations();
+      if (enabled) {
+        const heroTitle = document.querySelector('.hero h1[data-ripple]');
+        if (textRipple && heroTitle?._rippleModel) {
+          textRipple.scrambleReveal(heroTitle, { duration: 900, preserveText: true });
+        }
+      }
+    };
+    motionToggle.addEventListener('click', () => setMotion(!motionEnabled));
+    setMotion(true);
+    const sectionTitles = document.querySelectorAll('main > section .section-head h2');
+    sectionTitles.forEach(title => {
+      title.dataset.ripple = '';
+      title.dataset.duration = '900';
+    });
+    if (textRipple) {
+      document.fonts.ready.then(() => {
+        const heroTitle = document.querySelector('.hero h1[data-ripple]');
+        if (motionEnabled && heroTitle) textRipple.scrambleReveal(heroTitle, { duration: 1700, delay: 120 });
+      });
+      const miniMark = document.querySelector('.mini-mark[data-ripple]');
+      if (miniMark) {
+        miniMark.addEventListener('pointerenter', () => {
+          if (!motionEnabled || miniMark.dataset.rippleRunning === 'true') return;
+          miniMark.dataset.rippleRunning = 'true';
+          textRipple.scrambleReveal(miniMark, { duration: 650, preserveText: true })
+            .finally(() => { miniMark.dataset.rippleRunning = 'false'; });
+        });
+      }
+    }
+    const scrollProgress = document.getElementById('scrollProgress');
+    let scrollFrame = 0;
+    const updateScrollProgress = () => {
+      const range = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = range > 0 ? Math.min(window.scrollY / range, 1) : 0;
+      scrollProgress.style.transform = `scaleX(${progress})`;
+      scrollFrame = 0;
+    };
+    window.addEventListener('scroll', () => {
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollProgress);
+    }, { passive: true });
+    updateScrollProgress();
+    if ('IntersectionObserver' in window) {
+      document.documentElement.classList.add('motion-enabled');
+      const sections = document.querySelectorAll('main > section');
+      sections.forEach(section => {
+        section.classList.add('motion-pending');
+        section.querySelectorAll(':scope > .grid > .card').forEach((card, index) => {
+          card.style.setProperty('--reveal-delay', `${Math.min(index * 55, 220)}ms`);
+        });
+      });
+      const reveal = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.remove('motion-pending');
+          entry.target.classList.add('motion-visible');
+          const title = entry.target.querySelector('.section-head h2[data-ripple]');
+          if (motionEnabled && textRipple && title) {
+            document.fonts.ready.then(() => {
+              textRipple.scrambleReveal(title, { duration: 900, preserveText: true });
+            });
+          }
+          reveal.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+      sections.forEach(section => reveal.observe(section));
+    }
+  </script>
+</body>
+</html>

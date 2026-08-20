@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
+  <title id="title">BasedCode colour palette</title>
+  <desc id="desc">Dynamic technical purple palette with white as the sole key colour.</desc>
+  <style>@media (prefers-reduced-motion: reduce) { animate { display: none; } }</style>
+  <defs><linearGradient id="g" x1="0" x2="1"><animate attributeName="x1" values="-.18;.18;-.18" dur="8s" repeatCount="indefinite"/><animate attributeName="x2" values=".82;1.18;.82" dur="8s" repeatCount="indefinite"/><stop stop-color="#1D0A25"/><stop offset=".45" stop-color="#472458"/><stop offset=".72" stop-color="#83478F"/><stop offset="1" stop-color="#B568C2"/></linearGradient></defs>
+  <rect width="1200" height="260" rx="24" fill="#121014"/>
+  <rect x="32" y="32" width="920" height="196" rx="16" fill="url(#g)"/>
+  <rect x="976" y="32" width="192" height="196" rx="16" fill="#FFFFFF"/>
+  <text x="58" y="195" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="22">PURPLE FIELD</text>
+  <text x="1004" y="195" fill="#121014" font-family="JetBrains Mono, monospace" font-size="20">KEY / WHITE</text>
+</svg>
